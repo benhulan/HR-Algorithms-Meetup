@@ -25,11 +25,11 @@ var findMinimumPath = function(input) {
   // You should scrap it and start over with a dynamic programming solution!
   // But it might be of some help to you!
 
-
-
  var solution = [];
 
- var currentStep = i;
+// create a grid variable or function
+
+ var currentStep = 0;
  for (var i = 0; i < 3; i++) {
    if (currentStep[i] < currentStep[i+1] && currentStep[i] < currentStep[i-1]) {
     solution.push(currentStep[i]);
@@ -41,8 +41,7 @@ var findMinimumPath = function(input) {
  var l = [x+1];
  var nextStep = Math.min(j, k, l);
 
-// sum current + next
-
+// sum current + nex
 
    //var currentCol = 0;
    // for (var i = size.length; i > 1; i--) {

@@ -1,7 +1,7 @@
 (function() {
 
   var randInt = function() {
-    return Math.floor(Math.random()*90) + 10;
+    return Math.floor(Math.random()*10) + 1;
   };
 
   var clone = function(input) {

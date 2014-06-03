@@ -17,7 +17,7 @@
   solution to last meetup's making-change problem!  This is a little more challenging...
 */
 
-var size = 15;
+var size = 5;
 
 var findMinimumPath = function(input) {
 
@@ -25,26 +25,67 @@ var findMinimumPath = function(input) {
   // You should scrap it and start over with a dynamic programming solution!
   // But it might be of some help to you!
 
-  var solution = [];
-  var currentCol = 0;
-  for (var i = 1; i < size; i++) {
-    if (input[0][i] < input[0][currentCol]) {
-      currentCol = i;
-    }
-  }
-  solution.push(currentCol);
-  for (var y = 1; y < size; y++) {
-    var currentRow = input[y];
-    var left = currentRow[currentCol - 1] || Infinity;
-    var below = currentRow[currentCol];
-    var right = currentRow[currentCol + 1] || Infinity;
-    var min = Math.min(left, below, right);
-    if (min == left) {
-      currentCol--;
-    } else if (min == right) {
-      currentCol++;
-    }
-    solution.push(currentCol);
-  }
+ var solution = [];
+
+ var currentStep = i;
+ for (var i = 0; i < 3; i++) {
+   if (currentStep[i] < currentStep[i+1] && currentStep[i] < currentStep[i-1]) {
+    solution.push(currentStep[i]);
+   }
+ }
+
+ var j = [x-1];
+ var k = [x];
+ var l = [x+1];
+ var nextStep = Math.min(j, k, l);
+
+
+   //var currentCol = 0;
+   // for (var i = size.length; i > 1; i--) {
+   //   if (input[0][i] < input[0][currentCol]) {
+   //     currentCol = i;
+   //   }
+   // }
+
+   //solution.push(currentCol);
+   // for (var y = 1; y < size; y++) {
+   //   var currentRow = input[y];
+   //   var left = currentRow[currentCol - 1] || Infinity;
+   //   var below = currentRow[currentCol];
+   //   var right = currentRow[currentCol + 1] || Infinity;
+   //   var min = Math.min(left, below, right);
+   //   if (min == left) {
+   //     currentCol--;
+   //   } else if (min == right) {
+   //     currentCol++;
+   //   }
+   //   solution.push(currentCol);
+   // }
+
+ 
+
   return solution;
 };
+
+/*
+
+1, 1, 2, 3, 5, 8, 13...
+
+//recursive
+
+f0 = 1
+f1 = 1
+f(n) = f(n-1) + f(n-2)
+
+// it calls itself
+//dyanmic 
+
+f0 = 1
+f1 = 1
+f2 = 
+
+
+(Math.min)[n]
+
+*/
+
